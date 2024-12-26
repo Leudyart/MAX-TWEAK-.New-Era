@@ -1,0 +1,165 @@
+# This file will be read by resetprop
+# Example: Change dpi
+# ro.sf.lcd_density=320
+
+# THIS SETTING TELLS THE ANDROID SYSTEM TO USE AND SUPPORT ALL OF THESE GNSS SYSTEMS, IMPROVING LOCATION ACCURACY, ESPECIALLY IN AREAS WHERE ONE OR MORE OF THESE SYSTEMS MAY NOT BE FULLY AVAILABLE.
+
+# PROP FOR SHOW GNSS SUPPORT
+ro.config.gnss.support=GPS,NavIC,BeiDou,GLONASS,Galileo
+
+# ENABLE OR CONTROL SATELLITE VISIBILITY
+ro.gnss.sv.status=enabled
+
+# ENABLES LTE POSITIONING PROTOCOL (LPP) TO IMPROVE LOCATION ACCURACY ON LTE NETWORKS.
+persist.sys.gps.lpp=1
+
+# ENABLE A-GPS (NETWORK ASSISTED): THIS IMPROVES SATELLITE ACQUISITION TIME BY USING NETWORK DATA FOR ADDITIONAL INFORMATION.
+ro.gps.agps_provider=1
+
+# GNSS (GLOBAL NAVIGATION SATELLITE SYSTEMS) SUPPORT: INSTEAD OF LIMITING YOU TO GLONASS, ANDROID 14 AND MANY RECENT DEVICES CAN SUPPORT MULTIPLE SATELLITE NAVIGATION SYSTEMS SUCH AS GALILEO, BEIDOU, AND QZSS. THIS SETTING IS AUTOMATIC IF YOUR HARDWARE SUPPORTS IT.
+persist.gps.use_gl=1
+
+# SUPL SERVER (FOR A-GPS):TO IMPROVE THE SPEED OF SATELLITE ACQUISITION, YOU CAN MAKE SURE THAT THE SUPL SERVER IS CONFIGURED CORRECTLY. GOOGLE AND MOBILE OPERATORS OFTEN USE THE SUPL.GOOGLE.COM SERVER
+ro.gps.supl_server=supl.google.com
+
+## INSTALLATION SPEED (OPTIMIZED FOR FAST INSTALLATION)
+pm.dexopt.install=interpret-only
+pm.dexopt.install-fast=skip
+pm.dexopt.install-bulk=skip
+pm.dexopt.install-bulk-secondary=skip
+pm.dexopt.install-bulk-downgraded=skip
+pm.dexopt.install-bulk-secondary-downgraded=skip
+## CONFIGURATION TO ENSURE INTEGRITY AND STABILITY
+pm.dexopt.boot-after-ota=verify
+pm.dexopt.boot-after-mainline-update=verify
+pm.dexopt.cmdline=verify
+## FILTERS AND SETTINGS FOR MAXIMUM EFFICIENCY
+dalvik.vm.dex2oat-filter=speed-profile
+dalvik.vm.dex2oat-max-image-block-size=524288
+dalvik.vm.image-dex2oat-filter=speed-profile
+dalvik.vm.systemuicompilerfilter=speed
+dalvik.vm.dex2oat-resolve-startup-strings=true
+## PROFILE-BASED BACKGROUND OPTIMIZATION
+pm.dexopt.bg-dexopt=speed-profile
+pm.dexopt.post-boot=speed-profile
+## OPTIMIZATION AFTER OTA UPDATES
+pm.dexopt.ab-ota=speed-profile
+## FIRST-USE OPTIMIZATION OF APPLICATIONS
+pm.dexopt.first-use=speed-profile
+## OPTIMIZATION FOR SHARED APPLICATIONS AND SECONDARY CODE
+pm.dexopt.shared=speed
+pm.dexopt.secondary=speed-profile
+## OPTIMIZING IDLE APPLICATIONS TO SAVE RESOURCES
+pm.dexopt.inactive=verify
+
+# CONFIGURE OPTIMIZATION DURING THE FIRST BOOT
+pm.dexopt.first-boot=speed-profile
+
+# SPECIFY WHEN BACKGROUND OPTIMIZATION SHOULD BE EXECUTED
+pm.dexopt.boot=speed-profile
+
+# OPTIMIZING SYSTEM LIBRARIES WITH A PRIORITY ON PERFORMANCE
+pm.dexopt.nsys-library=speed-profile
+
+# CONFIGURE OPTIMIZATION DURING DM CREATION ON INSTALLATION
+pm.dexopt.install-create-dm=speed-profile
+
+# SETTING UP BASELINE OPTIMIZATION
+pm.dexopt.baseline=speed-profile
+
+# ENABLE DEX PRE-OPTIMIZATION
+dalvik.vm.enable_pr_dexopt=true
+
+# PRIORITIZE BACKGROUND DEXOPT. THIS AIMS TO HAVE APPS OPTIMIZED AND READY TO GO FOR A SMOOTHER EXPERIENCE BY THE TIME YOU LAUNCH THEM.
+persist.bg.dexopt.enable=true
+
+# OPTIMIZED CONFIGURATION for LMKD and ZRAM ENABLED
+# Desactiva el modo de baja memoria
+ro.config.low_ram=false
+# Habilita niveles personalizados de minfree
+ro.lmk.use_minfree_levels=true
+# Liberación moderada de memoria (retardo de acciones de matanza)
+ro.lmk.kill_timeout_ms=100
+# Ajusta el uso máximo de zRAM antes de matar procesos
+ro.lmk.swap_util_max=95
+# Niveles personalizados para matar procesos solo en alta presión de memoria
+# Cada valor representa la memoria libre (en KB) requerida antes de matar procesos.
+ro.lmk.minfree_levels=6144,8192,12288,16384,20480,25600
+
+# EFFECTIVELY MANAGE MEMORY WHEN THE CAMERA IS IN USE
+persist.sys.lmk.camera_minfree_levels=18432:0,23040:100,27648:200,125000:300,276480:800,362880:900
+
+# OPTIMIZE MEMORY USAGE AND IMPROVE PERFORMANCE OF ANDROID DEVICES, ESPECIALLY THOSE WITH LIMITED RESOURCES
+ro.vendor.qti.sys.fw.bg_apps_limit=50
+
+# MANAGE ZRAM USAGE MORE EFFICIENTLY
+ro.zram.mark_idle_delay_mins=5
+ro.zram.first_wb_delay_mins=60
+ro.zram.periodic_wb_delay_hours=1
+
+# ZRAM SETTINGS
+ro.vendor.qti.config.zram=true
+persist.sys.zram_enabled=true
+persist.sys.zram.comp_algorithm=lz4
+persist.vendor.zram.size=50p
+
+# DALVIK VIRTUAL MACHINE (VM) CONFIGURATION
+dalvik.vm.heapgrowthlimit=256m
+dalvik.vm.heapsize=512m
+dalvik.vm.heapmaxfree=32m
+dalvik.vm.heapminfree=8m
+dalvik.vm.heapstartsize=16m
+dalvik.vm.heaptargetutilization=0.5
+
+# REDUCE TOUCH DELAY by LEUDYART@
+# IMPROVE THE TOUCH SENSITIVITY OF THE SCREEN
+persist.sys.touch.size.calibration=geometric
+persist.sys.touch.size.scale=1.0
+persist.sys.touch.size.bias=0.0
+persist.sys.touch.size.isSummed=0
+persist.sys.touch.pressure.scale=0.00002
+persist.sys.touch.orientation.calibration=interpolated
+persist.sys.touch.distance.calibration=scaled
+persist.sys.touch.distance.scale=1.0
+persist.sys.touch.coverage.calibration=box
+persist.sys.touch.gestureMode=extended
+persist.sys.touch.pressure.calibration=amplitude
+MultitouchMinDistance=1
+MultitouchSettleInterval=0
+TapInterval=0.005
+TapDragInterval=0.05
+QuietInterval=0
+MovementSpeedRatio=0.9
+SwipeMaxWidthRatio=1
+ZoomSpeedRatio=1
+PointerVelocityControlParameters=1
+persist.dev.pm.dyn_samplingrate=1
+persist.sys.ui.hw=1
+view.touch_slop=2
+ro.product.multi_touch_enabled=true
+ro.product.max_num_touch=10
+ro.touch.pressure.enable=true
+
+# TOUCH MOVEMENT TOLERANCE KEEP THE SAME TOUCH AS IOS
+persist.sys.vendor.qti.inputopts.enable=true
+persist.sys.vendor.qti.inputopts.movetouchslop=0.005
+
+# IMPROVE SLIDING RESPONSE( BETTER SCROLLING RESPONSIVENESS AND SPEED )
+windowsmgr.max_events_per_sec=60
+view.scroll_friction=0.01
+ro.min_pointer_dur=3
+PointerGesture=true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
